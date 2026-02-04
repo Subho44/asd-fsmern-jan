@@ -11,10 +11,15 @@ body {
 }
 ul {
   display: flex;
-  margin-left: 90px;
+  float: right;
+  
   
 }
 li {
   list-style-type: none;
   padding: 10px 14px;
+  
+}
+a{
+  text-decoration: none;
 }
