@@ -15,14 +15,14 @@ function deletefileexists(filepathfromroot){
 //createjob
 exports.createjob = async (req,res)=>{
     const {title,company,location,salary,description} = req.body;
-    const jobimage = req.file ? `/uploads/jobs/${req.file.filename}`: "";
+    const image = req.file ? `/uploads/jobs/${req.file.filename}`: "";
     const job = await Job.create({
         title,
         company,
         location,
         salary: salary ? Number(salary) : 0,
         description,
-        jobimage
+        image
     });
     res.status(201).json({success:true, message:"job created", job});
 };
@@ -40,7 +40,7 @@ exports.getbyjob = async(req,res) => {
 //delete
 exports.deletejob = async(req,res) => {
     const job = await Job.findById(req.params.id);
-    deletefileexists(job.jobimage);
+    deletefileexists(job.image);
     await Job.findByIdAndDelete(req.params.id)
      res.status(201).json({message:"job deleted"});
 }

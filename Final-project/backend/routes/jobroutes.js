@@ -26,10 +26,10 @@ const upload = multer({
     limits:{fileSize:2*1024*1024}
 });
 
-router.post("/",upload.single("jobimage"),jbtrl.createjob);
+router.post("/",upload.single("image"),jbtrl.createjob);
 router.get("/",jbtrl.getalljobs);
 router.get("/:id",jbtrl.getbyjob);
-router.get("/:id",jbtrl.deletejob);
+router.delete("/:id",jbtrl.deletejob);
 
 
 module.exports = router;
