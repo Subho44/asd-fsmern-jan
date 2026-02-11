@@ -5,6 +5,7 @@ const path = require("path");
 require("dotenv").config();
 const connectdb = require("./config/db");
 const jobroutes = require("./routes/jobroutes");
+const authroutes = require("./routes/authRoutes");
 const app =express();
 
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/uploads',express.static(path.join(__dirname,"uploads")));
 connectdb();
 app.use("/api/jobs",jobroutes);
+app.use('/api/auth',authroutes);
 app.get('/',(req,res)=>{
     res.send("api is working");
 });
